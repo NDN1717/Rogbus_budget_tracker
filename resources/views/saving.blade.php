@@ -13,7 +13,14 @@
             background-image: url('bg3.jpg'); /* Background image path */
             background-size: cover; /* Cover the entire viewport */
             background-repeat: no-repeat; /* Do not repeat the background image */
-            background-position: center; /* Center the background image */
+            background-position: center center; /* Center the background image */
+            background-attachment: fixed; /* Fix the background image */
+            background-color: rgba(0, 0, 0, 0.5); /* Fallback color */
+        }
+        .content-container {
+            background-color: rgba(255, 255, 255, 0.8); /* Container background color with opacity */
+            padding: 20px;
+            border-radius: 10px;
         }
         .saving-card {
             background-color: rgba(0, 0, 0, 0.5); /* Transparent black card background */
@@ -53,7 +60,7 @@
 </head>
 <body>
 @include('include.header')
-<div class="container mt-5">
+<div class="container mt-5 content-container">
     <div class="row">
         <div class="col-md-12">
             @if (session('message'))
@@ -70,30 +77,30 @@
             <div class="row">
                 @foreach ($savings as $saving)
                     <div class="col-md-4">
-                        <div class="saving-card">
-                            <div class="saving-header">
-                                 ₱{{ $saving->amount }}
-                            </div>
-                            <div class="saving-actions">
-                                <a href="javascript:void(0)" onclick="showEditForm('{{ $saving->id }}')" class="edit-btn">
-                                    <i class="fas fa-edit saving-icon"></i> Edit
-                                </a>
-                                <form action="{{ route('savings.destroy', $saving->id) }}" method="POST" class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="delete-btn" onclick="return confirm('Are you Sure?')">
-                                        <i class="fas fa-trash saving-icon"></i> Delete
-                                    </button>
-                                </form>
-                            </div>
-                            <div id="edit-form-{{ $saving->id }}" class="edit-form">
-                                <form action="{{ route('savings.update', $saving->id) }}" method="POST">
-                                    @csrf
-                                    @method('PUT')
-                                    <label for="edit-amount">Edit Amount:</label>
-                                    <input type="number" id="edit-amount" name="amount" class="form-control" required>
-                                    <button type="submit" class="btn btn-primary mt-2">Save</button>
-                                </form>
+                        <div class="card saving-card">
+                            <div class="card-body">
+                                <h5 class="card-title saving-header">₱{{ $saving->amount }}</h5>
+                                <div class="saving-actions">
+                                    <a href="javascript:void(0)" onclick="showEditForm('{{ $saving->id }}')" class="edit-btn">
+                                        <i class="fas fa-edit saving-icon"></i> Edit
+                                    </a>
+                                    <form action="{{ route('savings.destroy', $saving->id) }}" method="POST" class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="delete-btn" onclick="return confirm('Are you Sure?')">
+                                            <i class="fas fa-trash saving-icon"></i> Delete
+                                        </button>
+                                    </form>
+                                </div>
+                                <div id="edit-form-{{ $saving->id }}" class="edit-form">
+                                    <form action="{{ route('savings.update', $saving->id) }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <label for="edit-amount">Edit Amount:</label>
+                                        <input type="number" id="edit-amount" name="amount" class="form-control" required>
+                                        <button type="submit" class="btn btn-primary mt-2">Save</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
