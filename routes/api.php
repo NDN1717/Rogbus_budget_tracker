@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthManager;
 use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\ReminderController;
 use App\Http\Controllers\SavingController;
 
 /*
@@ -24,3 +25,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('people', AuthManager::class);
 Route::apiResource('expenses', ExpenseController::class);
 Route::apiResource('savings', SavingController::class);
+Route::apiResource('reminders', ReminderController::class);

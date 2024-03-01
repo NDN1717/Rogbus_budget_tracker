@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthManager;
 use Illuminate\Auth\AuthManager as AuthAuthManager;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SavingController;
+use App\Http\Controllers\ReminderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,6 +49,15 @@ Route::controller(SavingController::class)->group(function () {
     Route::get('/savings/{saving}/edit', 'edit')->name('savings.edit');
     Route::put('/savings/{saving}', 'update')->name('savings.update');
     Route::delete('/savings/{saving}/delete', 'destroy')->name('savings.destroy');
+});
+
+Route::controller(ReminderController::class)->group(function () {
+    Route::get('/reminders', [ReminderController::class, 'index'])->name('reminders.index');
+    Route::get('/reminders/create', 'create')->name('reminder.create');
+    Route::post('/reminders', 'store')->name('reminders.store');
+    Route::get('/reminders/{reminder}/edit', 'edit')->name('reminders.edit');
+    Route::put('/reminders/{reminder}', 'update')->name('reminders.update');
+    Route::delete('/reminders/{reminder}/delete', 'destroy')->name('reminders.destroy');
 });
 
 

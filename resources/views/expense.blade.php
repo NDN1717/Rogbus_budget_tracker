@@ -62,14 +62,6 @@
         .delete-btn:hover {
             background-color: #dc3545; /* Darken button on hover */
         }
-        #graph-container {
-            width: calc(100% - 40px); /* Adjust width and add some space on the sides */
-            height: 300px; /* Adjust height as needed */
-            margin: 15px auto; /* Center the graph container and add some space below */
-            background-color: rgba(0, 0, 0, 0.5); /* Transparent black background for the graph */
-            padding: 15px; /* Match padding with expense card */
-            border-radius: 10px; /* Match border-radius with expense card */
-        }
         .add-expenses-btn {
             position: absolute;
             top: 50px;
@@ -104,7 +96,7 @@
                 @foreach ($expenses as $index => $expense)
                     <div class="expense-card">
                         <div class="expense-header">
-                            {{ $expense->exp }}
+                            {{ $expense->exp }} - {{ $expense->created_at->format('Y-m-d') }}
                             <span class="badge badge-price">₱ {{ $expense->price }}</span>
                         </div>
                         <div class="expense-actions">
@@ -128,48 +120,7 @@
         </div>
     </div>
 </div>
-<div id="graph-container"></div>
 <a href="{{ route('expenses.create') }}" class="btn btn-light add-expenses-btn">Add Expenses</a>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script>
-    var chart; // Declare chart variable
-
-// Render the graph initially
-renderGraph();
-
-// Update the graph data periodically
-setInterval(renderGraph, 10000); // Update every 10 seconds
-
-function renderGraph() {
-    // Simulated data for the graph
-    var data = [];
-    for (var i = 0; i < 10; i++) {
-        data.push(Math.random() * 100);
-    }
-
-    // If chart is already initialized, update the series data
-    if (chart) {
-        chart.series[0].setData(data);
-    } else {
-        // Otherwise, initialize the chart
-        chart = Highcharts.chart('graph-container', {
-            chart: {
-                backgroundColor: 'rgba(0, 0, 0, 0.5)' // Transparent black background for the chart
-            },
-            title: {
-                text: 'Real-time Stock Graph',
-                style: {
-                    color: '#fff' // White text color for the title
-                }
-            },
-            series: [{
-                name: 'Stock Price',
-                data: data
-            }]
-        });
-    }
-}
-</script>
 </body>
 </html>
