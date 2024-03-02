@@ -69,7 +69,7 @@
         <div class="col-lg-4">
             <div class="card">
                 <div class="card-header">
-                    <h1 class="card-title text-center">Noel ROlito Kath</h1> <!-- Centering the login text -->
+                    <h1 class="card-title text-center">Login</h1> <!-- Centering the login text -->
                 </div>
                 <div class="card-body">
                     @if(Session::has('error'))
