@@ -72,17 +72,16 @@ class AuthManager extends Controller
 
     // Index function
     public function index(){
-        return User::with('expenses', 'savings')->get(); // Include 'savings' relationship
+        return User::with('expenses', 'savings', 'reminders')->get(); // Include 'savings' relationship
     }
 
     // Store function
     public function store(Request $request){
         $user = User::create($request->all());
-        if($request->has('expenses', 'savings')){
+        if($request->has('expenses', 'savings', 'reminders')){
             $user->expenses()->createMany($request->input('expenses'));
-        }
-        if($request->has('savings')){ // Add savings if provided
             $user->savings()->createMany($request->input('savings'));
+            $user->reminders()->createMany($request->input('reminders'));
         }
         return response()->json($user, 200);
     }
