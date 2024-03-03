@@ -16,8 +16,8 @@
             font-family: 'Times New Roman', Times, serif; /* Change font to Times New Roman */
         }
         .expense-card {
-            background-color: rgba(0, 0, 0, 0.5); /* Transparent black background */
-            color: #fff; /* White text color */
+            background-color: #fff; /* White background */
+            color: #000; /* Black text color */
             border: 1px solid #c4cacf; /* Lighter Grey border */
             border-radius: 10px;
             margin-right: 15px; /* Add margin between cards */
@@ -36,7 +36,7 @@
         .expense-header {
             font-size: 1.2rem;
             margin-bottom: 10px;
-            color: #fff; /* White text color */
+            color: #000; /* Black text color */
         }
         .expense-icon {
             margin-right: 5px;
@@ -80,7 +80,7 @@
             }
         }
         .badge-price {
-            color: #fff; /* Set the color to white */
+            color: #000; /* Set the color to black */
         }
     </style>
 </head>
@@ -96,7 +96,7 @@
                 @foreach ($expenses as $index => $expense)
                     <div class="expense-card">
                         <div class="expense-header">
-                            {{ $expense->exp }} - {{ $expense->created_at->format('Y-m-d') }}
+                            {{ $expense->exp }}
                             <span class="badge badge-price">₱ {{ $expense->price }}</span>
                         </div>
                         <div class="expense-actions">

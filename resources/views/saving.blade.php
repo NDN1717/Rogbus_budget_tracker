@@ -10,12 +10,8 @@
     <style>
         /* Custom Styles */
         body {
-            background-image: url('bg3.jpg'); /* Background image path */
-            background-size: cover; /* Cover the entire viewport */
-            background-repeat: no-repeat; /* Do not repeat the background image */
-            background-position: center center; /* Center the background image */
-            background-attachment: fixed; /* Fix the background image */
-            background-color: rgba(0, 0, 0, 0.5); /* Fallback color */
+            background-color: whitesmoke; /* Background color */
+            font-family: 'Arial', sans-serif; /* Change font to Arial */
         }
         .content-container {
             background-color: rgba(255, 255, 255, 0.8); /* Container background color with opacity */
@@ -23,8 +19,8 @@
             border-radius: 10px;
         }
         .saving-card {
-            background-color: rgba(0, 0, 0, 0.5); /* Transparent black card background */
-            color: #fff; /* White text color */
+            background-color: #fff; /* White card background */
+            color: #000; /* Black text color */
             border-radius: 10px;
             margin-bottom: 15px;
             padding: 15px;
@@ -37,6 +33,11 @@
         .saving-header {
             font-size: 1.2rem;
             margin-bottom: 10px;
+        }
+        .saving-date {
+            font-size: 0.9rem;
+            color: #6c757d; /* Dark Grey text color */
+            margin-bottom: 5px;
         }
         .saving-icon {
             margin-right: 5px;
@@ -69,9 +70,15 @@
             <div id="savingsInputContainer">
                 <form action="{{ route('savings.store') }}" method="POST">
                     @csrf
-                    <label for="amount">Enter Amount:</label>
-                    <input type="number" id="amount" name="amount" class="form-control" required>
-                    <button type="submit" class="btn btn-primary mt-2">Save</button>
+                    <div class="mb-3">
+                        <label for="date" class="form-label">Date:</label>
+                        <input type="date" id="date" name="date" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="amount" class="form-label">Enter Amount:</label>
+                        <input type="number" id="amount" name="amount" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save</button>
                 </form>
             </div>
             <div class="row">
@@ -80,6 +87,7 @@
                         <div class="card saving-card">
                             <div class="card-body">
                                 <h5 class="card-title saving-header">₱{{ $saving->amount }}</h5>
+                                <p class="card-text saving-date">Date: {{ $saving->date }}</p>
                                 <div class="saving-actions">
                                     <a href="javascript:void(0)" onclick="showEditForm('{{ $saving->id }}')" class="edit-btn">
                                         <i class="fas fa-edit saving-icon"></i> Edit

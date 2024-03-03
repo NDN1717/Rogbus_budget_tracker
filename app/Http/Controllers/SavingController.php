@@ -29,7 +29,8 @@ class SavingController extends Controller
         $user = Auth::user();
 
         $saving = new Saving([
-            'amount' => $request->input('amount')
+            'amount' => $request->input('amount'),
+            'date' => $request->input('date')
             
         ]);
 
@@ -38,7 +39,7 @@ class SavingController extends Controller
         if ($request->is('api/*')) {
             return response()->json(["message" => "Successfully created the savings' data"]);
         } else {
-            return redirect()->route('savings.index')->with('message', 'Savings Created');
+            return redirect()->route('savings.index')->with('message', '');
         }
     }
 
@@ -58,7 +59,7 @@ class SavingController extends Controller
         if ($request->is('api/*')) {
             return response()->json(["message" => "Successfully updated the expense's data"]);
         } else {
-            return redirect()->route('savings.index')->with('message', 'Savings Updated');
+            return redirect()->route('savings.index')->with('message', '');
         }
     }
 
@@ -69,7 +70,7 @@ class SavingController extends Controller
         if (request()->is('api/*')) {
             return response()->json(["message" => "Successfully deleted the savings; data"]);
         } else {
-            return redirect()->route('savings.index')->with('message', 'Savings Deleted');
+            return redirect()->route('savings.index')->with('message', '');
         }
     }
 }

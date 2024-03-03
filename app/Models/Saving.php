@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Saving extends Model
 {
-    protected $fillable = ["amount", "user_id"];
+    protected $fillable = ["amount","date", "user_id"];
     use HasFactory;
 
     public function user(){

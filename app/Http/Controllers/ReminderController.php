@@ -30,7 +30,7 @@ class ReminderController extends Controller
         $user = Auth::user();
 
         $reminder = new Reminder([
-            'usr_reminders' => $request->input('usr_reminders')
+            'rem' => $request->input('rem')
             
         ]);
 
