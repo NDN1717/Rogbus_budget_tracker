@@ -75,7 +75,7 @@
                 </a>
                 <!-- About Us Card -->
                 <a href="{{ url('about-us') }}" class="card">
-                    <h5 class="card-title">About Us</h5>
+                    <h5 class="card-title">About </h5>
                 </a>
             </div>
         </div>
