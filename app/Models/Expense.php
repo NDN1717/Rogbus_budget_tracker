@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Expense extends Model
 {
-    protected $fillable = ["exp","price", "user_id"];
+    protected $fillable = ["exp","price","date", "user_id"];
     use HasFactory;
 
     public function user(){

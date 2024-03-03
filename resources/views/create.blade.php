@@ -32,7 +32,7 @@
             background-color: #495057; /* Darken button on hover */
             border-color: #495057; /* Darken border on hover */
         }
-        input[type="text"] {
+        input[type="text"], input[type="date"] {
             background-color: #fff; /* White background for text input */
             border: 1px solid #ced4da; /* Light Grey border for text input */
             border-radius: 5px;
@@ -70,6 +70,13 @@
                             <input type="text" name="price" value="{{ old('price') }}" required>
                             @error('price') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
+
+                        <div class="mb-3">
+                            <label>Date</label>
+                            <input type="date" name="date" value="{{ old('date') }}" required>
+                            @error('date') <span class="text-danger">{{ $message }}</span> @enderror
+                        </div>
+                        
                         <div class="mb-3">
                             <button type="submit" class="btn btn-primary">Save</button>
                         </div>

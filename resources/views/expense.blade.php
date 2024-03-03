@@ -82,6 +82,11 @@
         .badge-price {
             color: #000; /* Set the color to black */
         }
+        .expense-date {
+            font-size: 0.9rem;
+            color: #6c757d; /* Dark Grey text color */
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
@@ -98,6 +103,9 @@
                         <div class="expense-header">
                             {{ $expense->exp }}
                             <span class="badge badge-price">₱ {{ $expense->price }}</span>
+                        </div>
+                        <div class="expense-date">
+                            Created: {{ $expense->created_at->format('M d, Y') }}
                         </div>
                         <div class="expense-actions">
                             <a href="{{ route('expenses.edit', $expense->id) }}" class="edit-btn">

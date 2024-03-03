@@ -31,6 +31,8 @@ class ExpenseController extends Controller
         $expense = new Expense([
             'exp' => $request->input('exp'),
             'price' => $request->input('price'),
+            'date' => $request->input('date'),
+            
         ]);
 
         $user->expenses()->save($expense);
@@ -38,7 +40,7 @@ class ExpenseController extends Controller
         if ($request->is('api/*')) {
             return response()->json(["message" => "Successfully created the expense's data"]);
         } else {
-            return redirect()->route('expenses.index')->with('message', 'Expense Created');
+            return redirect()->route('expenses.index')->with('message', '');
         }
     }
 
@@ -58,7 +60,7 @@ class ExpenseController extends Controller
         if ($request->is('api/*')) {
             return response()->json(["message" => "Successfully updated the expense's data"]);
         } else {
-            return redirect()->route('expenses.index')->with('message', 'Expense Updated');
+            return redirect()->route('expenses.index')->with('message', '');
         }
     }
 
@@ -69,7 +71,7 @@ class ExpenseController extends Controller
         if (request()->is('api/*')) {
             return response()->json(["message" => "Successfully deleted the expense's data"]);
         } else {
-            return redirect()->route('expenses.index')->with('message', 'Expense Deleted');
+            return redirect()->route('expenses.index')->with('message', '');
         }
     }
 }
