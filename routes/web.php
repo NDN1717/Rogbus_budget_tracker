@@ -60,6 +60,10 @@ Route::controller(ReminderController::class)->group(function () {
     Route::delete('/reminders/{reminder}/delete', 'destroy')->name('reminders.destroy');
 });
 
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+
 
 
 
