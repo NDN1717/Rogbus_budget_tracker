@@ -27,3 +27,4 @@ Route::apiResource('expenses', ExpenseController::class);
 Route::apiResource('savings', SavingController::class);
 Route::apiResource('reminders', ReminderController::class);
 
+Route::post('/login-retrofit', [AuthManager::class, 'loginRetrofit']);

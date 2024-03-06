@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <base href="/public">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PennyWise</title>
@@ -18,10 +19,17 @@
             padding: 20px;
         }
 
+        .row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center; /* Center align items vertically */
+        }
+
         .card-container {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             gap: 20px;
+            width: 250px;
         }
 
         .card {
@@ -35,7 +43,7 @@
             cursor: pointer; /* Add cursor pointer */
             text-decoration: none; /* Remove underline */
             text-align: center; /* Center align text */
-            width: 250px;
+            width: 100%;
         }
 
         .card:hover {
@@ -58,21 +66,29 @@
             color: #6c757d; /* Text color */
         }
 
-        .graph-container {
-            margin-top: 50px;
-            text-align: center;
+        .logo-container {
+            flex: 1; /* Take remaining space */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%; /* Adjust height to match adjacent content */
         }
-        
+
+        .logo {
+            width: 200px; /* Set width of the logo */
+            height: auto; /* Maintain aspect ratio */
+            max-height: 100px; /* Limit max height for responsiveness */
+        }
     </style>
 </head>
 <body>
-    @include('include.header')
-<!-- Main Content -->
-<div class="container mt-4">
-    <div class="row">
-        <!-- Card Section -->
-        <div class="col-md-12">
+    <!-- Include Header -->
+    @include('include.header') 
 
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Card Section -->
             <div class="card-container">
                 <!-- Expenses Card -->
                 <a href="{{ url('expenses') }}" class="card">
@@ -88,19 +104,8 @@
                 </a>
             </div>
 
-            <!-- Graph Section -->
-            <div class="graph-container">
-                <h2>Expense Overview</h2>
-                <!-- <canvas id="expenseChart" width="400" height="200"></canvas> -->
-                <p>No chart available</p>
-            </div>
-        </div>
-    </div>
-</div>
 
-<!-- Bootstrap JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-
+    <!-- Bootstrap JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

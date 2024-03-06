@@ -8,6 +8,7 @@ use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\LoginRequest;
 
 class AuthManager extends Controller
 {
@@ -18,6 +19,24 @@ class AuthManager extends Controller
         }
         return view('login');
     }
+    public function loginRetrofit(Request $request)
+{
+    // 1. Find the user by email
+    $user = User::where('email', $request->email)->first();
+
+    if ($user && Auth::attempt($request->only('email', 'password'))) {
+        return response()->json([
+            'message' => 'Login successful',
+            'email' => $user->email,
+            'userId' => $user->id,
+        ], 200); 
+    } else {
+        // Invalid credentials (or user not found)
+        return response()->json([
+            'error' => 'Invalid credentials'
+        ], 401); 
+    }
+}
 
     // Registration function
     function registration(){
