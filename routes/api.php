@@ -26,3 +26,4 @@ Route::apiResource('people', AuthManager::class);
 Route::apiResource('expenses', ExpenseController::class);
 Route::apiResource('savings', SavingController::class);
 Route::apiResource('reminders', ReminderController::class);
+

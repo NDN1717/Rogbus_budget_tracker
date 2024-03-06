@@ -10,7 +10,7 @@
     <style>
         /* Custom Styles */
         body {
-            background-image: url('bg4.jpg'); /* Set the background image */
+            background-image: url(''); /* Set the background image */
             background-size: cover; /* Cover the entire viewport */
             background-repeat: no-repeat; /* Do not repeat the background image */
             font-family: 'Times New Roman', Times, serif; /* Change font to Times New Roman */
@@ -87,6 +87,13 @@
             color: #6c757d; /* Dark Grey text color */
             margin-top: 5px;
         }
+        /* Added new style for the canvas */
+        #expensesChart {
+            width: 100%;
+            max-width: 800px; /* Adjust max width as needed */
+            margin: auto; /* Center the chart */
+            margin-top: 50px; /* Add margin on top of the chart */
+        }
     </style>
 </head>
 <body>
@@ -104,9 +111,7 @@
                             {{ $expense->exp }}
                             <span class="badge badge-price">₱ {{ $expense->price }}</span>
                         </div>
-                        <div class="expense-date">
-                            Created: {{ $expense->created_at->format('M d, Y') }}
-                        </div>
+            
                         <div class="expense-actions">
                             <a href="{{ route('expenses.edit', $expense->id) }}" class="edit-btn">
                                 <i class="fas fa-edit expense-icon"></i> Edit
@@ -129,6 +134,76 @@
     </div>
 </div>
 <a href="{{ route('expenses.create') }}" class="btn btn-light add-expenses-btn">Add Expenses</a>
+
+<!-- Add Canvas for the graph below the expenses -->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <canvas id="expensesChart"></canvas>
+        </div>
+    </div>
+</div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    
+    // Create the Chart.js instance
+var expenseLabels = [];
+var expensePrices = [];
+@foreach ($expenses as $expense)
+    expenseLabels.push("{{ $expense->exp }} ({{ $expense->created_at->format('M d, Y') }})"); // Include the date in the label
+    expensePrices.push("{{ $expense->price }}");
+@endforeach
+
+// Create the Chart.js instance
+var ctx = document.getElementById('expensesChart').getContext('2d');
+var expensesChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: expenseLabels,
+        datasets: [{
+            label: '',
+            data: expensePrices,
+            backgroundColor: 'rgba(54, 162, 235, 0.8)', // Darker blue color with transparency
+            borderColor: 'rgba(54, 162, 235, 1)', // Darker blue color
+            borderWidth: 2 // Increased border width for better visibility
+        }]
+    },
+    options: {
+        scales: {
+            x: {
+                ticks: {
+                    autoSkip: false,
+                    maxRotation: 0,
+                    minRotation: 0
+                }
+            },
+            y: {
+                beginAtZero: true // Start y-axis at 0
+            }
+        },
+        plugins: {
+            // Add plugin for background color
+            legend: {
+                labels: {
+                    fontColor: 'black' // Set legend label color
+                }
+            },
+            title: {
+                display: true,
+                text: 'Expenses Overview',
+                fontColor: 'black' // Set title color
+            },
+            background: {
+                color: 'rgba(255, 255, 255, 0.7)' // Smokey white background color
+            }
+        }
+    }
+});
+</script>
+
+
+
 </body>
 </html>

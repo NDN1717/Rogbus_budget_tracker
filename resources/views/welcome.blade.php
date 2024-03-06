@@ -8,7 +8,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
-      background-image: url('bg7.jpg'); /* Add a background image with money-related elements */
+      background-image: url('bg10.jpg'); /* Add a background image with money-related elements */
       background-size: cover; /* Cover the entire background */
       background-repeat: no-repeat; /* Prevent the image from repeating */
       height: 100vh; /* Set the height of the body to full viewport height */
