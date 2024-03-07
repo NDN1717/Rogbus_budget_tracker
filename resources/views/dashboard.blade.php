@@ -13,37 +13,90 @@
         body {
             background-color: #f5f5f5; /* Light Gray background color */
             font-family: 'Arial', sans-serif; /* Change font to Arial */
+            margin: 0;
+            padding: 0;
         }
 
         .container {
             padding: 20px;
-        }
-
-        .row {
             display: flex;
+            flex-direction: row;
             justify-content: space-between;
-            align-items: center; /* Center align items vertically */
+            align-items: flex-start;
         }
 
-        .card-container {
+        .left-section {
+            width: 30%;
             display: flex;
             flex-direction: column;
+            align-items: center;
+        }
+
+        .right-section {
+            width: 65%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .section {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .infographic {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 40px; /* Updated margin-top for more space */
+        }
+
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .step-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .step-description {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .cards-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             gap: 20px;
-            width: 250px;
+            margin-top: 20px;
+            margin-bottom: 40px; /* Added margin-bottom for space between cards and infographic */
         }
 
         .card {
-            color: #212529; /* Text color */
-            background-color: #ffffff; /* White background color */
-            border: 1px solid #ced4da; /* Add border */
+            color: #212529;
+            background-color: #ffffff;
+            border: 1px solid #ced4da;
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
-            cursor: pointer; /* Add cursor pointer */
-            text-decoration: none; /* Remove underline */
-            text-align: center; /* Center align text */
-            width: 100%;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            width: 250px;
+            margin-bottom: 20px; /* Added margin to create space between buttons */
         }
 
         .card:hover {
@@ -52,7 +105,7 @@
         }
 
         .card-title {
-            font-size: 20px; /* Increase font size */
+            font-size: 20px;
             margin-bottom: 15px;
         }
 
@@ -63,21 +116,11 @@
 
         .card-description {
             font-size: 16px;
-            color: #6c757d; /* Text color */
+            color: #6c757d;
         }
-
-        .logo-container {
-            flex: 1; /* Take remaining space */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100%; /* Adjust height to match adjacent content */
-        }
-
-        .logo {
-            width: 200px; /* Set width of the logo */
-            height: auto; /* Maintain aspect ratio */
-            max-height: 100px; /* Limit max height for responsiveness */
+        
+        .section.investing {
+            margin-top: 50px; /* Adjusted margin-top to move Investing section down */
         }
     </style>
 </head>
@@ -87,23 +130,65 @@
 
     <!-- Main Content -->
     <div class="container mt-4">
-        <div class="row">
-            <!-- Card Section -->
-            <div class="card-container">
-                <!-- Expenses Card -->
-                <a href="{{ url('expenses') }}" class="card">
-                    <i class="icon fas fa-money-bill-wave"></i>
-                    <h3 class="card-title">Expenses</h3>
-                    <p class="card-description">Track your expenses and manage your spending.</p>
-                </a>
-                <!-- Savings Card -->
-                <a href="{{ url('savings') }}" class="card">
-                    <i class="icon fas fa-piggy-bank"></i>
-                    <h3 class="card-title">Savings</h3>
-                    <p class="card-description">Monitor your savings and set financial goals.</p>
-                </a>
+        <div class="left-section">
+            <!-- Expenses Card -->
+            <a href="{{ url('expenses') }}" class="card">
+                <i class="icon fas fa-money-bill-wave"></i>
+                <h3 class="card-title">Expenses</h3>
+                <p class="card-description">Track your expenses and manage your spending.</p>
+            </a>
+            <!-- Savings Card -->
+            <a href="{{ url('savings') }}" class="card">
+                <i class="icon fas fa-piggy-bank"></i>
+                <h3 class="card-title">Savings</h3>
+                <p class="card-description">Monitor your savings and set financial goals.</p>
+            </a>
+        </div>
+        <div class="right-section">
+            <div class="section">
+                <h3 class="section-title">How to Save and Invest</h3>
+                <div class="infographic">
+                    <div class="step">
+                        <i class="step-icon fas fa-coins"></i>
+                        <div class="step-description">Save a portion of your income regularly.</div>
+                    </div>
+                    <div class="step">
+                        <i class="step-icon fas fa-chart-line"></i>
+                        <div class="step-description">Create a budget and stick to it.</div>
+                    </div>
+                    <div class="step">
+                        <i class="step-icon fas fa-cut"></i>
+                        <div class="step-description">Cut unnecessary expenses.</div>
+                    </div>
+                </div>
             </div>
-
+            <div class="section investing"> <!-- Added investing class -->
+                <h3 class="section-title">Investing</h3>
+                <div class="infographic">
+                    <div class="step">
+                        <i class="step-icon fas fa-chart-line"></i>
+                        <div class="step-description">Start with a diversified investment portfolio.</div>
+                    </div>
+                    <div class="step">
+                        <i class="step-icon fas fa-search-dollar"></i>
+                        <div class="step-description">Research and understand investment options.</div>
+                    </div>
+                    <div class="step">
+                        <i class="step-icon fas fa-chart-pie"></i>
+                        <div class="step-description">Monitor and review your investments regularly.</div>
+                    </div>
+                    <div class="step">
+                        <i class="step-icon fas fa-balance-scale"></i>
+                        <div class="step-description">Stay informed about market trends.</div>
+                    </div>
+                    <div class="step">
+                        <i class="step-icon fas fa-hand-holding-usd"></i>
+                        <div class="step-description">Diversify your investments.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Bootstrap JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
