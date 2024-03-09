@@ -14,7 +14,7 @@
             background-attachment: fixed;
             padding-top: 120px; /* Adjusted padding */
             padding-bottom: 40px;
-            font-family: 'Times New Roman', Times, serif; /* Change font to Times New Roman */
+            font-family: 'Roboto', sans-serif; /* Change font to Times New Roman */
         }
 
         .card {

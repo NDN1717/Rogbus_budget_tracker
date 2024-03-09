@@ -17,7 +17,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Times New Roman', Times, serif; /* Change font to Times New Roman */
+            font-family: 'Roboto', sans-serif; /* Change font to Times New Roman */
         }
         .card-container {
             max-width: 600px; /* Adjust the maximum width of the card container */

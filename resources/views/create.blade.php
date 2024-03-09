@@ -12,7 +12,7 @@
             background-image: url('bg3.jpg'); /* Add your background image URL */
             background-size: cover; /* Cover the entire viewport */
             background-repeat: no-repeat; /* Do not repeat the background image */
-            font-family: 'Times New Roman', Times, serif; /* Change font to Times New Roman */
+            font-family: 'Roboto', sans-serif; /* Change font to Times New Roman */
         }
         .card {
             background-color: rgba(233, 236, 239, 0.6); /* Transparent Grey background */
@@ -41,9 +41,8 @@
 </head>
 <body>
 <div class="container mt-5">
-    <div class="row">
-        <div class="col-md-12">
-
+    <div class="row justify-content-center"> <!-- Center the content -->
+        <div class="col-md-6"> <!-- Adjust column width as needed -->
             @if (session('status'))
                 <div class="alert alert">{{ session('status') }}</div>
             @endif
@@ -58,9 +57,8 @@
                     <form action="{{ url('expenses') }}" method="POST">
                         @csrf
 
-                        <h4>Expenses</h4>
                         <div class="mb-3">
-                            <label>Expense</label>
+                            <label>Name your expenses</label>
                             <input type="text" name="exp" value="{{ old('exp') }}" required>
                             @error('exp') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>

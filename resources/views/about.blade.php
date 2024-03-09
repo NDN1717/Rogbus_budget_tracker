@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <base href="/public">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PennyWise - About Us</title>
@@ -51,13 +52,30 @@
 
         /* Developer Cards */
         .developer-card {
-            background-color: #f8f9fa; /* Light gray background */
+            background-color: #fff; /* White background color */
             padding: 20px;
-            border-radius: 10px;
-            margin-top: 20px;
+            border-radius: 20px; /* Rounder border */
+            margin-top: 40px; /* Move the developer cards down */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100%; /* Set the height to occupy full height */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow */
+            transition: all 0.3s ease; /* Add transition effect */
+        }
+
+        .developer-card:hover {
+            transform: translateY(-5px); /* Move the card up on hover */
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Add a stronger shadow on hover */
         }
 
         .developer-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
         }
 
@@ -70,6 +88,13 @@
             font-size: 16px;
             line-height: 1.6;
         }
+
+        .developer-info img {
+            max-width: 100%; /* Make the image fit the container */
+            height: auto; /* Ensure aspect ratio */
+            margin-bottom: 10px; /* Add margin */
+            border-radius: 50%; /* Make the image round */
+        }
     </style>
 </head>
 <body>
@@ -81,13 +106,13 @@
 <div class="main-content">
     <!-- About Section -->
     <section id="about">
-        <div class="about container">
-            <div class="col-left">
-            </div>
+        <div class="about container text-center"> <!-- Center the About Us section -->
             <div class="col-right">
                 <h1 class="section-title">About <span>Us</span></h1>
-                <h2>Full-stack Developer</h2>
-                <p>Greetings! I'm Noel Dominic Neyra, an experienced full-stack developer dedicated to creating innovative digital solutions. My expertise covers both front-end and back-end development, specializing in dynamic and user-centric web applications. Proficient in HTML, CSS, JavaScript, and various frameworks, I bring a blend of creativity and technical skills to each project. Let's connect and explore the limitless potential of technology together!</p>
+                <h2></h2>
+                <p>Welcome to Pennywise, your go-to budget tracking application! Our journey began as 
+                    ambitious college students with a single goal: to successfully complete this project. 
+                    Fast forward to today, and here we are, proud creators of Pennywise.</p>
             </div>
         </div>
     </section>
@@ -101,8 +126,8 @@
                 <div class="col-md-3">
                     <div class="developer-card">
                         <div class="developer-info">
-                            <img src="developer1.jpg" alt="Developer 1">
-                            <h2>John Doe</h2>
+                            <img src="ab2.jpg" alt="Developer 1">
+                            <h2>Noel Neyra</h2>
                             <p>Front-end Developer</p>
                         </div>
                     </div>
@@ -110,8 +135,8 @@
                 <div class="col-md-3">
                     <div class="developer-card">
                         <div class="developer-info">
-                            <img src="developer2.jpg" alt="Developer 2">
-                            <h2>Jane Smith</h2>
+                            <img src="ab3.jpg" alt="Developer 2">
+                            <h2>Rolito Visoeras Jr.</h2>
                             <p>Back-end Developer</p>
                         </div>
                     </div>
@@ -119,8 +144,8 @@
                 <div class="col-md-3">
                     <div class="developer-card">
                         <div class="developer-info">
-                            <img src="developer3.jpg" alt="Developer 3">
-                            <h2>David Johnson</h2>
+                            <img src="ab4.jpg" alt="Developer 3">
+                            <h2>Arvin Lim</h2>
                             <p>UI/UX Designer</p>
                         </div>
                     </div>
@@ -128,8 +153,8 @@
                 <div class="col-md-3">
                     <div class="developer-card">
                         <div class="developer-info">
-                            <img src="developer4.jpg" alt="Developer 4">
-                            <h2>Emily Brown</h2>
+                            <img src="ab1.jpg" alt="Developer 4">
+                            <h2>Jerome Ibarra</h2>
                             <p>Full-stack Developer</p>
                         </div>
                     </div>

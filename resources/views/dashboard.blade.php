@@ -7,6 +7,7 @@
     <title>PennyWise</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
         /* Custom CSS styles */
@@ -122,6 +123,43 @@
         .section.investing {
             margin-top: 50px; /* Adjusted margin-top to move Investing section down */
         }
+
+        .chart-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        .line-chart-container {
+            margin-top: 40px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .about-us-card {
+            width: 250px;
+            background-color: #ffffff; /* Changed background color to black */
+            color: #000000; /* Changed text color to white */
+            border: 1px solid #ced4da;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .about-us-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-us-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
     </style>
 </head>
 <body>
@@ -143,54 +181,85 @@
                 <h3 class="card-title">Savings</h3>
                 <p class="card-description">Monitor your savings and set financial goals.</p>
             </a>
+            <!-- About Us Card -->
+            <a href="{{ url('/about') }}" class="about-us-card">
+                <i class="about-us-icon fas fa-info-circle"></i>
+                <h3 class="card-title">About Us</h3>
+                <p class="card-description">Learn more about PennyWise and our team.</p>
+            </a>
         </div>
         <div class="right-section">
-            <div class="section">
-                <h3 class="section-title">How to Save and Invest</h3>
-                <div class="infographic">
-                    <div class="step">
-                        <i class="step-icon fas fa-coins"></i>
-                        <div class="step-description">Save a portion of your income regularly.</div>
-                    </div>
-                    <div class="step">
-                        <i class="step-icon fas fa-chart-line"></i>
-                        <div class="step-description">Create a budget and stick to it.</div>
-                    </div>
-                    <div class="step">
-                        <i class="step-icon fas fa-cut"></i>
-                        <div class="step-description">Cut unnecessary expenses.</div>
-                    </div>
-                </div>
+            <div class="chart-container">
+                <canvas id="investmentChart"></canvas>
             </div>
-            <div class="section investing"> <!-- Added investing class -->
-                <h3 class="section-title">Investing</h3>
-                <div class="infographic">
-                    <div class="step">
-                        <i class="step-icon fas fa-chart-line"></i>
-                        <div class="step-description">Start with a diversified investment portfolio.</div>
-                    </div>
-                    <div class="step">
-                        <i class="step-icon fas fa-search-dollar"></i>
-                        <div class="step-description">Research and understand investment options.</div>
-                    </div>
-                    <div class="step">
-                        <i class="step-icon fas fa-chart-pie"></i>
-                        <div class="step-description">Monitor and review your investments regularly.</div>
-                    </div>
-                    <div class="step">
-                        <i class="step-icon fas fa-balance-scale"></i>
-                        <div class="step-description">Stay informed about market trends.</div>
-                    </div>
-                    <div class="step">
-                        <i class="step-icon fas fa-hand-holding-usd"></i>
-                        <div class="step-description">Diversify your investments.</div>
-                    </div>
-                </div>
+            <div class="line-chart-container">
+                <h3 class="section-title"></h3>
+                <canvas id="savingInvestmentChart"></canvas>
             </div>
         </div>
     </div>
 
     <!-- Bootstrap JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Chart.js data for the first chart
+        var ctx = document.getElementById('investmentChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Start', 'Research', 'Monitor', 'Stay Informed', 'Diversify'],
+                datasets: [{
+                    label: 'Investing Steps',
+                    data: [10, 20, 30, 40, 50],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Chart.js data for the second chart (line chart)
+        var ctx2 = document.getElementById('savingInvestmentChart').getContext('2d');
+        var myLineChart = new Chart(ctx2, {
+            type: 'line',
+            data: {
+                labels: ['Start', 'Research', 'Monitor', 'Stay Informed', 'Diversify'],
+                datasets: [{
+                    label: 'Saving and Investment Steps',
+                    data: [10, 20, 30, 40, 50],
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>

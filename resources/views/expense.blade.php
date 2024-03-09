@@ -13,7 +13,7 @@
             background-image: url(''); /* Set the background image */
             background-size: cover; /* Cover the entire viewport */
             background-repeat: no-repeat; /* Do not repeat the background image */
-            font-family: 'Times New Roman', Times, serif; /* Change font to Times New Roman */
+            font-family: 'Roboto', sans-serif; /* Change font to Times New Roman */
         }
         .expense-card {
             background-color: #fff; /* White background */

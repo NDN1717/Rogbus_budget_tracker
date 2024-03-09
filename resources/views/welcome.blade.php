@@ -16,7 +16,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: Arial, sans-serif; /* Set a fallback font */
+      font-family: 'Roboto', sans-serif; /* Set a fallback font */
     }
     .container {
       display: flex;
