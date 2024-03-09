@@ -243,9 +243,9 @@
         var myLineChart = new Chart(ctx2, {
             type: 'line',
             data: {
-                labels: ['Start', 'Research', 'Monitor', 'Stay Informed', 'Diversify'],
+                labels: ['Start', 'Budget', 'Cut Expenses', 'Set Goals', 'Automate'],
                 datasets: [{
-                    label: 'Saving and Investment Steps',
+                    label: 'Saving Steps',
                     data: [10, 20, 30, 40, 50],
                     backgroundColor: 'rgba(255, 99, 132, 0.2)',
                     borderColor: 'rgba(255, 99, 132, 1)',
