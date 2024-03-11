@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Edit Expenses</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             background-image: url('bg3.jpg'); /* Add your background image URL */
@@ -33,11 +33,12 @@
             color: #333; /* Dark Grey text color */
             font-weight: bold; /* Bold text */
         }
-        input[type="text"] {
+        input[type="text"], input[type="date"] {
             background-color: #f8f9fa; /* Light Grey input background */
             border: 1px solid #c4cacf; /* Lighter Grey border */
             border-radius: 5px; /* Rounded border */
             padding: 8px; /* Add padding */
+            width: 100%; /* Set width to 100% */
         }
         .btn-primary {
             background-color: #6c757d; /* Dark Grey button */
@@ -54,31 +55,38 @@
             <div class="col-md-12">
 
                 @if (session('status'))
-                    <div class="alert alert">{{session('status')}}</div>
+                    <div class="alert alert-success">{{ session('status') }}</div>
                 @endif
 
                 <div class="card">
                     <div class="card-header">
                         <h4 class="m-0">Edit Expenses
-                            <a href="{{ url('expenses')}}" class="btn btn-primary float-end">Back</a>
+                            <a href="{{ url('expenses') }}" class="btn btn-primary float-end">Back</a>
                         </h4>
                     </div>
                     <div class="card-body">
-                        <form action="{{ url('expenses/'.$expense->id)}}" method="POST">
+                        <form action="{{ url('expenses/'.$expense->id) }}" method="POST">
                             @csrf
                             @method('PUT')
 
                             <div class="mb-3">
-                                <label>Expense</label>
-                                <input type="text" name="exp" value="{{$expense->exp}}" required>
+                                <label for="exp">Expense</label>
+                                <input type="text" id="exp" name="exp" value="{{ $expense->exp }}" required>
                                 @error('exp') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
 
                             <div class="mb-3">
-                                <label>Price</label>
-                                <input type="text" name="price" value="{{$expense->price}}" required>
+                                <label for="price">Price</label>
+                                <input type="text" id="price" name="price" value="{{ $expense->price }}" required>
                                 @error('price') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
+
+                            <div class="mb-3">
+                                <label for="date">Date</label>
+                                <input type="date" id="date" name="date" value="{{ $expense->date }}" required>
+                                @error('date') <span class="text-danger">{{ $message }}</span> @enderror  
+                            </div>
+                        
                             <div class="mb-3">
                                 <button type="submit" class="btn btn-primary">Update</button>
                             </div>

@@ -106,7 +106,7 @@
                                     @csrf
                                     @method('PUT')
                                     <label for="edit-amount">Edit Amount:</label>
-                                    <input type="number" id="edit-amount" name="amount" class="form-control" required>
+                                    <input type="number" id="edit-amount-{{ $saving->id }}" name="amount" class="form-control" value="{{ $saving->amount }}" required>
                                     <button type="submit" class="btn btn-primary mt-2">Save</button>
                                 </form>
                             </div>

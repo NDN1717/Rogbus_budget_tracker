@@ -19,24 +19,28 @@ class AuthManager extends Controller
         }
         return view('login');
     }
-    public function loginRetrofit(Request $request)
-{
-    // 1. Find the user by email
-    $user = User::where('email', $request->email)->first();
-
-    if ($user && Auth::attempt($request->only('email', 'password'))) {
-        return response()->json([
-            'message' => 'Login successful',
-            'email' => $user->email,
-            'userId' => $user->id,
-        ], 200); 
-    } else {
-        // Invalid credentials (or user not found)
-        return response()->json([
-            'error' => 'Invalid credentials'
-        ], 401); 
+    
+    public function loginRetrofit(Request $request){
+        // 1. Find the user by email
+        $user = User::where('email', $request->email)->first();
+    
+        if ($user && Auth::attempt($request->only('email', 'password'))) {
+            // Generate a token for the user
+            $token = $user->createToken('AuthToken')->plainTextToken;
+    
+            return response()->json([
+                'message' => 'Login successful',
+                'email' => $user->email,
+                'userId' => $user->id,
+                'token' => $token, // Include the token in the response
+            ], 200); 
+        } else {
+            // Invalid credentials (or user not found)
+            return response()->json([
+                'error' => 'Invalid credentials'
+            ], 401); 
+        }
     }
-}
 
     // Registration function
     function registration(){

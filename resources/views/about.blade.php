@@ -128,7 +128,7 @@
                         <div class="developer-info">
                             <img src="ab2.jpg" alt="Developer 1">
                             <h2>Noel Neyra</h2>
-                            <p>Front-end Developer</p>
+                            <p>Back-end Developer</p>
                         </div>
                     </div>
                 </div>
@@ -137,7 +137,7 @@
                         <div class="developer-info">
                             <img src="ab3.jpg" alt="Developer 2">
                             <h2>Rolito Visoeras Jr.</h2>
-                            <p>Back-end Developer</p>
+                            <p>Full-stack Developer</p>
                         </div>
                     </div>
                 </div>
@@ -146,7 +146,7 @@
                         <div class="developer-info">
                             <img src="ab4.jpg" alt="Developer 3">
                             <h2>Arvin Lim</h2>
-                            <p>UI/UX Designer</p>
+                            <p>Front-end Developer</p>
                         </div>
                     </div>
                 </div>
