@@ -12,7 +12,7 @@
             background-image: url('bg3.jpg'); /* Add your background image URL */
             background-size: cover; /* Cover the entire viewport */
             background-repeat: no-repeat;
-            font-family: 'Times New Roman', Times, serif; /* Change font to Times New Roman */
+            font-family: 'Roboto', sans-serif; /* Change font to Times New Roman */
         }
         .card {
             background-color: rgba(224, 229, 235, 0.8); /* Transparent Grey card background */
@@ -60,7 +60,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="m-0">Edit Expenses
+                        <h4 class="m-0">
                             <a href="{{ url('expenses') }}" class="btn btn-primary float-end">Back</a>
                         </h4>
                     </div>
@@ -87,8 +87,8 @@
                                 @error('date') <span class="text-danger">{{ $message }}</span> @enderror  
                             </div>
                         
-                            <div class="mb-3">
-                                <button type="submit" class="btn btn-primary">Update</button>
+                            <div class="mb-3 text-center">
+                                <button type="submit" class="btn btn-primary btn-sm">Update</button>
                             </div>
                         </form>
                     </div>

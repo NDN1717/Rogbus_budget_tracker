@@ -48,6 +48,23 @@
     .form-link:hover {
       text-decoration: underline;
     }
+    .btn-container {
+      display: flex;
+      flex-direction: column; /* Stack buttons vertically */
+      align-items: center; /* Center buttons horizontally */
+    }
+    .btn {
+      width: 100%; /* Set both buttons to fill their container */
+      margin-bottom: 10px; /* Add spacing between buttons */
+    }
+    .btn-primary {
+      background-color: #222; /* Smokey black */
+      border-color: #222;
+    }
+    .btn-primary:hover {
+      background-color: #444; /* Darker smokey black on hover */
+      border-color: #444;
+    }
   </style>
 </head>
 <body>
@@ -67,7 +84,7 @@
       <div class="mb-3 text-center">
         
       </div>
-      <div class="mb-3">
+      <div class="mb-3 btn-container">
         <a href="{{ route('login') }}" class="btn btn-primary btn-lg d-block mb-3">Login</a>
         <a href="{{ route('registration') }}" class="btn btn-secondary btn-lg d-block">Register</a>
       </div>

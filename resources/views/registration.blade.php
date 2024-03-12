@@ -43,13 +43,19 @@
             border-bottom-right-radius: 10px;
         }
         .form-label {
-            font-weight: bold;
+            font-weight: normal; /* Remove bold text */
         }
         .form-control {
             height: 40px; /* Set the height of the form controls */
         }
         .btn-primary {
             height: 40px; /* Set the height of the button */
+            background-color: #666; /* Smokey grey background color */
+            border-color: #666; /* Smokey grey border color */
+        }
+        .btn-primary:hover {
+            background-color: #888; /* Darker smokey grey on hover */
+            border-color: #888;
         }
     </style>
 </head>
