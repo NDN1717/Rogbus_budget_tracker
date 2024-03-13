@@ -155,7 +155,7 @@
                         <div class="developer-info">
                             <img src="ab1.jpg" alt="Developer 4">
                             <h2>Jerome Ibarra</h2>
-                            <p>Full-stack Developer</p>
+                            <p>UI/UX Designer</p>
                         </div>
                     </div>
                 </div>
