@@ -68,7 +68,7 @@
                 <h4 class="alert alert-success">{{ session('message') }}</h4>
             @endif
             <div id="savingsInputContainer" class="text-center"> <!-- Added text-center class here -->
-                <form action="{{ route('savings.store') }}" method="POST">
+                <form id="savingForm" action="{{ route('savings.store') }}" method="POST">
                     @csrf
                     <div class="mb-3">
                         <label for="date" class="form-label">Date:</label>
@@ -90,9 +90,9 @@
                             <p class="card-text saving-date">Date: {{ $saving->date }}</p>
                             
                             <div class="saving-actions">
-                                <a href="javascript:void(0)" onclick="showEditForm('{{ $saving->id }}')" class="edit-btn">
+                                <button onclick="showEditForm('{{ $saving->id }}', '{{ $saving->date }}', '{{ $saving->amount }}')" class="edit-btn">
                                     <i class="fas fa-edit saving-icon"></i> Edit
-                                </a>
+                                </button>
                                 <form action="{{ route('savings.destroy', $saving->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
@@ -102,10 +102,11 @@
                                 </form>
                             </div>
                             <div id="edit-form-{{ $saving->id }}" class="edit-form">
-                                <form action="{{ route('savings.update', $saving->id) }}" method="POST">
+                                <form id="edit-form" action="{{ route('savings.update', $saving->id) }}" method="POST">
                                     @csrf
                                     @method('PUT')
                                     <label for="edit-amount">Edit Amount:</label>
+                                    <input type="date" id="edit-date-{{ $saving->id }}" name="date" class="form-control mb-2" required value="{{ $saving->date }}">
                                     <input type="number" id="edit-amount-{{ $saving->id }}" name="amount" class="form-control" value="{{ $saving->amount }}" required>
                                     <button type="submit" class="btn btn-primary mt-2">Save</button>
                                 </form>
@@ -121,12 +122,24 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
 <script>
-    function showEditForm(id) {
+    function showEditForm(id, date, amount) {
         var editForm = document.getElementById('edit-form-' + id);
-        if (editForm.style.display === 'none') {
+        var saveBtn = document.getElementById('saveBtn');
+        var savingForm = document.getElementById('savingForm');
+        var editDate = document.getElementById('edit-date-' + id);
+        var editAmount = document.getElementById('edit-amount-' + id);
+        
+        if (editForm.style.display === 'none' || editForm.style.display === '') {
             editForm.style.display = 'block';
+            savingForm.style.display = 'none';
+            saveBtn.style.display = 'none';
+            // Preload data into edit form
+            editDate.value = date;
+            editAmount.value = amount;
         } else {
             editForm.style.display = 'none';
+            savingForm.style.display = 'block';
+            saveBtn.style.display = 'block';
         }
     }
 </script>
