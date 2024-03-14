@@ -148,7 +148,7 @@ class ExpenseController extends Controller
         ]);
 
         $expense->update([
-            
+            'user_id' => $user->id,
             'exp' => $request->input('exp'),
             'price' => $request->input('price'),
             'date' => $request->input('date')
